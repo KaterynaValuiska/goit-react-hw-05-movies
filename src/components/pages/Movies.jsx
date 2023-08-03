@@ -5,14 +5,13 @@ import { Loader } from 'components/Loader';
 const Movies = () => {
   const [films, setFilms] = useState([]);
   const [loader, setLoader] = useState(false);
-  const [inputValue, setInputValue] = useState('');
   const [messege, setMessege] = useState('');
   const [searchParams, setSearchParams] = useSearchParams('');
   const query = searchParams.get('query');
   const location = useLocation();
 
   useEffect(() => {
-    if (inputValue === '') {
+    if (query === null) {
       return;
     }
     setLoader(true);
@@ -29,28 +28,18 @@ const Movies = () => {
       .catch(err => console.error('error:' + err));
   }, [query]);
 
-  const handleChange = evt => {
-    setInputValue(evt.target.value.toLowerCase());
-    // setSearchParams({ query: evt.target.value.toLowerCase() });
-  };
-
   const handleSubmit = evt => {
     evt.preventDefault();
-    setSearchParams({ query: inputValue });
-    // if (query.trim() === '') {
-    //   alert('Not found. Enter your request.');
-    //   return;
-    // }
-
-    // setSearchParams({ query: '' });
+    const form = evt.currentTarget;
+    setSearchParams({ query: form.elements.query.value });
+    form.reset();
   };
-  // const visibleFilms = films.filter(film => film.title.includes(query));
 
   return (
     <div>
       <h2>Search film</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" onChange={handleChange} value={inputValue} />
+        <input type="text" name="query" />
         <button type="submit">search</button>
       </form>
       {loader && <Loader />}
@@ -75,19 +64,3 @@ const Movies = () => {
 };
 
 export default Movies;
-
-// const fetch = require('node-fetch');
-
-// const url = 'https://api.themoviedb.org/3/search/movie?query={}&';
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     accept: 'application/json',
-//     Authorization: 'Bearer a1b7d969f999448bbc786cfc77eb64e6',
-//   },
-// };
-
-// fetch(url, options)
-//   .then(res => res.json())
-//   .then(json => console.log(json))
-//   .catch(err => console.error('error:' + err));
