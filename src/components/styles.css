@@ -1,0 +1,44 @@
+.Layout {
+  padding: 10px;
+}
+
+.LayoutNav {
+  display: flex;
+  gap: 10px;
+  border-bottom: 2px solid grey;
+  padding-bottom: 15px;
+  text-decoration: none;
+}
+
+.Movie {
+  display: flex;
+  gap: 40px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid grey;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+.Cast {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.CastCard {
+  width: 200px;
+  text-align: center;
+}
+
+.MovieInfo {
+  padding-bottom: 15px;
+  border-bottom: 2px solid grey;
+}
+.NotFoundFilm {
+  margin-top: 15px;
+}
+
+.btnGoBack {
+  margin-top: 15px;
+}
