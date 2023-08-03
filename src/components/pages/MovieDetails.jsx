@@ -12,7 +12,7 @@ const MovieDetails = () => {
   const [genres, setGenres] = useState([]);
   const [loader, setLoader] = useState(false);
   const location = useLocation();
-  const backLinkLocation = useRef(location.state?.from ?? '/movie');
+  const backLinkLocation = useRef(location.state.from ?? '/movie');
 
   useEffect(() => {
     setLoader(true);
@@ -33,7 +33,7 @@ const MovieDetails = () => {
     <>
       {loader && <Loader />}
       <button className="btnGoBack">
-        <Link to={backLinkLocation.current}>go back</Link>
+        <Link to={backLinkLocation.current}>Go back</Link>
       </button>
 
       <h2>{title}</h2>
@@ -59,10 +59,14 @@ const MovieDetails = () => {
       <h3>Additional information</h3>
       <ul className="MovieInfo">
         <li>
-          <Link to="cast">Cast</Link>
+          <Link to="cast" state={{ from: backLinkLocation }}>
+            Cast
+          </Link>
         </li>
         <li>
-          <Link to="reviews">Reviews </Link>
+          <Link to="reviews" state={{ from: backLinkLocation }}>
+            Reviews{' '}
+          </Link>
         </li>
       </ul>
       <Outlet />
