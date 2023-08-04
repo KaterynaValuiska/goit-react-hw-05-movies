@@ -32,14 +32,13 @@ const Movies = () => {
     evt.preventDefault();
     const form = evt.currentTarget;
     setSearchParams({ query: form.elements.query.value });
-    form.reset();
   };
 
   return (
     <div>
       <h2>Search film</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="query" />
+        <input type="text" name="query" value={query} readOnly />
         <button type="submit">search</button>
       </form>
       {loader && <Loader />}
