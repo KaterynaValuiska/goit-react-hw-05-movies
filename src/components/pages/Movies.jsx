@@ -38,7 +38,7 @@ const Movies = () => {
     <div>
       <h2>Search film</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="query" value={query} readOnly />
+        <input type="text" name="query" value={query} />
         <button type="submit">search</button>
       </form>
       {loader && <Loader />}
