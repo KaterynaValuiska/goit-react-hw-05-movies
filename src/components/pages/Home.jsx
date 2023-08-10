@@ -26,7 +26,11 @@ const Home = () => {
         {films.map(film => {
           return (
             <li key={film.id}>
-              <Link to={`/movies/${film.id}`} state={{ from: location }}>
+              <Link
+                to={`/movies/${film.id}`}
+                state={{ from: location }}
+                className="NavLink"
+              >
                 {film.title}
               </Link>
             </li>

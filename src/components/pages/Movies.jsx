@@ -38,7 +38,7 @@ const Movies = () => {
     <div>
       <h2>Search film</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="query" value={query} />
+        <input type="text" name="query" defaultValue={query ?? ''} />
         <button type="submit">search</button>
       </form>
       {loader && <Loader />}
@@ -48,7 +48,11 @@ const Movies = () => {
           {films.map(film => {
             return (
               <li key={film.id}>
-                <Link to={`/movies/${film.id}`} state={{ from: location }}>
+                <Link
+                  to={`/movies/${film.id}`}
+                  state={{ from: location }}
+                  className="NavLink"
+                >
                   {film.title}
                 </Link>
               </li>

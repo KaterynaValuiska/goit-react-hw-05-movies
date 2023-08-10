@@ -46,3 +46,7 @@ p {
 .NavLink {
   text-decoration: none;
 }
+
+li {
+  padding-bottom: 5px;
+}
