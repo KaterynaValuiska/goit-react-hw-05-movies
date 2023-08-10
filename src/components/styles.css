@@ -43,3 +43,6 @@ p {
   margin-top: 15px;
   text-decoration: none;
 }
+.NavLink {
+  text-decoration: none;
+}
